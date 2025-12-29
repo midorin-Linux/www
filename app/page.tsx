@@ -47,7 +47,7 @@ export default function Home() {
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-1 flex-col p-5 pt-10 md:pl-85">
+            <div className="flex flex-1 flex-col p-5 pt-10 md:pl-85 pb-10">
                 <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
                     Introduction
                 </h2>
@@ -64,7 +64,7 @@ export default function Home() {
                             <p className="leading-7 [&:not(:first-child)]:mt-6">
                                 主にRustなどのコンパイラ言語を扱うほか、Pythonなどの有名な言語も扱っています。
                                 <br />
-                                幅広くやっていますが専門はバックエンドと人工知能です。
+                                幅広くやっていますが専門はバックエンドと生成AIです。
                             </p>
                         </AccordionContent>
                     </AccordionItem>
@@ -74,7 +74,7 @@ export default function Home() {
                             <p className="leading-7 [&:not(:first-child)]:mt-6">
                                 Fusion360を使用したCADや、Blenderを使用した簡単なモデリング程度ならできます。
                                 <br />
-                                KiCADを使用した基盤設計は勉強中です。
+                                KiCADを使用した基板設計は勉強中です。
                             </p>
                         </AccordionContent>
                     </AccordionItem>

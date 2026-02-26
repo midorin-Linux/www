@@ -21,6 +21,10 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   title: "やあさ | 自己紹介",
   description: "やあさの自己紹介サイト",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/avatar.png",
+  },
 };
 
 export default function RootLayout({

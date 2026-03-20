@@ -47,7 +47,7 @@ export const profile: ProfileData = {
   name: "やあさ",
   title: "学生趣味コーダー",
   location: "東京, 日本",
-  email: "moriya@suwako.me (まだ存在しない)",
+  email: "moriya@suwako.me",
   avatarUrl: "/avatar.png",
   bio: "自分でも何ができるかはわからないですが、多分いろいろできます。",
   socialLinks: [

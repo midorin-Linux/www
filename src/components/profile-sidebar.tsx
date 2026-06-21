@@ -179,7 +179,7 @@ export function ProfileSidebar() {
       <div className="mx-4 mt-4 flex shrink-0 flex-col items-start gap-4">
         <div className="relative h-60 w-full">
           <img
-            src="/avatar.png"
+            src="/avatar.jpg"
             alt="アニメ化された諏訪子の女装をしている男子高校生"
             className="h-60 w-60 rounded-full object-cover shadow-xl"
           />

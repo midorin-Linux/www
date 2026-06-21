@@ -177,12 +177,17 @@ export function ProfileSidebar() {
   return (
     <aside className="flex h-full max-h-screen flex-col items-start gap-3 p-4">
       <div className="mx-4 mt-4 flex shrink-0 flex-col items-start gap-4">
-        <div>
+        <div className="relative h-60 w-full">
           <img
             src="/avatar.png"
             alt="アニメ化された諏訪子の女装をしている男子高校生"
             className="h-60 w-60 rounded-full object-cover shadow-xl"
           />
+          <div className="absolute inset-0 top-45 left-20 flex rotate-345 items-center justify-center">
+            <span className="shrink-0 bg-black/40 px-2 text-3xl font-semibold tracking-wider text-white">
+              Matias Torres&hearts;
+            </span>
+          </div>
         </div>
         <div className="text-left">
           <Tooltip>
@@ -193,11 +198,13 @@ export function ProfileSidebar() {
               <p>別名: みどりん</p>
             </TooltipContent>
           </Tooltip>
-          <p className="mt-1 font-medium text-muted-foreground">
-            学生趣味コーダー
-          </p>
-          <div className="mt-2 flex items-center justify-center gap-1 text-sm text-muted-foreground lg:justify-start">
-            <span>he/him</span>
+          <div className="flex flex-row gap-2">
+            <p className="font-medium text-muted-foreground">
+              学生趣味コーダー
+            </p>
+            <div className="mt-1 flex items-center justify-center my-auto gap-1 text-sm text-muted-foreground lg:justify-start">
+              <span>he/him</span>
+            </div>
           </div>
         </div>
 

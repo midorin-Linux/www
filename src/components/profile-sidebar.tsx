@@ -59,16 +59,16 @@ function ProfileSidebarLinks() {
 }
 
 interface Skills {
-  natural_languages: string[];
-  programming_languages: string[];
-  frameworks: string[];
-  tools: string[];
+  natural_languages: string[]
+  programming_languages: string[]
+  frameworks: string[]
+  tools: string[]
 }
 
 interface SkillCategoryProps {
-  title: string;
-  tooltip: string;
-  items: string[];
+  title: string
+  tooltip: string
+  items: string[]
 }
 
 function SkillCategory({ title, tooltip, items }: SkillCategoryProps) {
@@ -120,7 +120,7 @@ export function ProfileSidebar() {
       "Java",
       "CUDA",
       "Zig",
-      "NASM"
+      "NASM",
     ],
     frameworks: [
       "Axum",
@@ -138,7 +138,7 @@ export function ProfileSidebar() {
       "Express.js",
       "Spring Boot",
       "Unity",
-      "Android SDK"
+      "Android SDK",
     ],
     tools: [
       "AviUtil 2",
@@ -154,12 +154,25 @@ export function ProfileSidebar() {
     ],
   }
 
-  const skillCategories: { title: string; tooltip: string; items: string[] }[] = [
-    { title: "Natural languages", tooltip: "話せる順", items: ProfileSidebarSkills.natural_languages },
-    { title: "Programming languages", tooltip: "書ける順", items: ProfileSidebarSkills.programming_languages },
-    { title: "Frameworks", tooltip: "書ける言語順", items: ProfileSidebarSkills.frameworks },
-    { title: "Tools", tooltip: "A-Z順", items: ProfileSidebarSkills.tools },
-  ]
+  const skillCategories: { title: string; tooltip: string; items: string[] }[] =
+    [
+      {
+        title: "Natural languages",
+        tooltip: "話せる順",
+        items: ProfileSidebarSkills.natural_languages,
+      },
+      {
+        title: "Programming languages",
+        tooltip: "書ける順",
+        items: ProfileSidebarSkills.programming_languages,
+      },
+      {
+        title: "Frameworks",
+        tooltip: "書ける言語順",
+        items: ProfileSidebarSkills.frameworks,
+      },
+      { title: "Tools", tooltip: "A-Z順", items: ProfileSidebarSkills.tools },
+    ]
 
   return (
     <aside className="flex h-full max-h-screen flex-col items-start gap-3 p-4">
@@ -195,7 +208,7 @@ export function ProfileSidebar() {
         <Separator />
       </div>
 
-      <div className="flex min-h-0 w-full flex-1 flex-col gap-3 overflow-y-auto px-4 scrollbar-thin">
+      <div className="flex min-h-0 w-full flex-1 scrollbar-thin flex-col gap-3 overflow-y-auto px-4">
         <div>
           <h2 className="mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
             Links
@@ -217,10 +230,10 @@ export function ProfileSidebar() {
         </div>
       </div>
 
-      <div className="px-4 mb-4 w-full">
+      <div className="mb-4 w-full px-4">
         <Separator />
 
-        <h2 className="mb-3 mt-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+        <h2 className="mt-3 mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
           Contact
         </h2>
         <a

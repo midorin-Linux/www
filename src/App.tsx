@@ -8,7 +8,7 @@ export function App() {
       </div>
 
       <main className="min-w-0 flex-1">
-        <div className="mx-auto max-w-3xl space-y-16 px-6 py-16">
+        <div className="mx-auto max-w-6xl space-y-16 px-6 py-16">
           <h1>Hello!</h1>
 
           <footer className="border-t pt-8">

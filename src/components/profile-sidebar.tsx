@@ -65,6 +65,40 @@ interface Skills {
   tools: string[];
 }
 
+interface SkillCategoryProps {
+  title: string;
+  tooltip: string;
+  items: string[];
+}
+
+function SkillCategory({ title, tooltip, items }: SkillCategoryProps) {
+  return (
+    <div>
+      <Tooltip>
+        <TooltipTrigger>
+          <h3 className="mb-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+            {title}
+          </h3>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{tooltip}</p>
+        </TooltipContent>
+      </Tooltip>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((item) => (
+          <Badge
+            key={item}
+            variant={"secondary"}
+            className="bg-primary/10 text-xs font-normal"
+          >
+            {item}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function ProfileSidebar() {
   const ProfileSidebarSkills: Skills = {
     natural_languages: [
@@ -120,6 +154,13 @@ export function ProfileSidebar() {
     ],
   }
 
+  const skillCategories: { title: string; tooltip: string; items: string[] }[] = [
+    { title: "Natural languages", tooltip: "話せる順", items: ProfileSidebarSkills.natural_languages },
+    { title: "Programming languages", tooltip: "書ける順", items: ProfileSidebarSkills.programming_languages },
+    { title: "Frameworks", tooltip: "書ける言語順", items: ProfileSidebarSkills.frameworks },
+    { title: "Tools", tooltip: "A-Z順", items: ProfileSidebarSkills.tools },
+  ]
+
   return (
     <aside className="flex flex-col items-start gap-4 p-8">
       <div>
@@ -168,98 +209,9 @@ export function ProfileSidebar() {
           Skills
         </h2>
         <div className="mt-2 ml-2 flex flex-wrap gap-4">
-          <div>
-            <Tooltip>
-              <TooltipTrigger>
-                <h3 className="mb-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                  Natural languages
-                </h3>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>話せる順</p>
-              </TooltipContent>
-            </Tooltip>
-            <div className="flex flex-wrap gap-1.5">
-              {ProfileSidebarSkills.natural_languages.map((language) => (
-                <Badge
-                  key={language}
-                  variant={"secondary"}
-                  className="bg-primary/10 text-xs font-normal"
-                >
-                  {language}
-                </Badge>
-              ))}
-            </div>
-          </div>
-          <div>
-            <Tooltip>
-              <TooltipTrigger>
-                <h3 className="mb-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                  Programming languages
-                </h3>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>書ける順</p>
-              </TooltipContent>
-            </Tooltip>
-            <div className="flex flex-wrap gap-1.5">
-              {ProfileSidebarSkills.programming_languages.map((language) => (
-                <Badge
-                  key={language}
-                  variant={"secondary"}
-                  className="bg-primary/10 text-xs font-normal"
-                >
-                  {language}
-                </Badge>
-              ))}
-            </div>
-          </div>
-          <div>
-            <Tooltip>
-              <TooltipTrigger>
-                <h3 className="mb-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                  Frameworks
-                </h3>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>書ける言語順</p>
-              </TooltipContent>
-            </Tooltip>
-            <div className="flex flex-wrap gap-1.5">
-              {ProfileSidebarSkills.frameworks.map((framework) => (
-                <Badge
-                  key={framework}
-                  variant={"secondary"}
-                  className="bg-primary/10 text-xs font-normal"
-                >
-                  {framework}
-                </Badge>
-              ))}
-            </div>
-          </div>
-          <div>
-            <Tooltip>
-              <TooltipTrigger>
-                <h3 className="mb-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                  Tools
-                </h3>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>A-Z順</p>
-              </TooltipContent>
-            </Tooltip>
-            <div className="flex flex-wrap gap-1.5">
-              {ProfileSidebarSkills.tools.map((tool) => (
-                <Badge
-                  key={tool}
-                  variant={"secondary"}
-                  className="bg-primary/10 text-xs font-normal"
-                >
-                  {tool}
-                </Badge>
-              ))}
-            </div>
-          </div>
+          {skillCategories.map((category) => (
+            <SkillCategory key={category.title} {...category} />
+          ))}
         </div>
       </div>
 
@@ -274,7 +226,7 @@ export function ProfileSidebar() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <Mail className="h-3.5 w-3.5" />
-          moriya@suwako.me
+          moriya@suwako.meOptimize the display process of skills.
         </a>
       </div>
     </aside>

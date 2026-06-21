@@ -162,63 +162,65 @@ export function ProfileSidebar() {
   ]
 
   return (
-    <aside className="flex flex-col items-start gap-4 p-8">
-      <div>
-        <img
-          src="/avatar.png"
-          alt="アニメ化された諏訪子の女装をしている男子高校生"
-          className="h-60 w-60 rounded-full object-cover shadow-xl"
-        />
-      </div>
-      <div className="text-left">
-        <Tooltip>
-          <TooltipTrigger className="text-2xl font-medium tracking-tight">
-            やあさ
-          </TooltipTrigger>
-          <TooltipContent side={"right"}>
-            <p>別名: みどりん</p>
-          </TooltipContent>
-        </Tooltip>
-        <p className="mt-1 font-medium text-muted-foreground">
-          学生趣味コーダー
+    <aside className="flex h-full max-h-screen flex-col items-start gap-3 p-4">
+      <div className="mx-4 mt-4 flex shrink-0 flex-col items-start gap-4">
+        <div>
+          <img
+            src="/avatar.png"
+            alt="アニメ化された諏訪子の女装をしている男子高校生"
+            className="h-60 w-60 rounded-full object-cover shadow-xl"
+          />
+        </div>
+        <div className="text-left">
+          <Tooltip>
+            <TooltipTrigger className="text-2xl font-medium tracking-tight">
+              やあさ
+            </TooltipTrigger>
+            <TooltipContent side={"right"}>
+              <p>別名: みどりん</p>
+            </TooltipContent>
+          </Tooltip>
+          <p className="mt-1 font-medium text-muted-foreground">
+            学生趣味コーダー
+          </p>
+          <div className="mt-2 flex items-center justify-center gap-1 text-sm text-muted-foreground lg:justify-start">
+            <span>he/him</span>
+          </div>
+        </div>
+
+        <p className="text-center text-sm leading-relaxed text-muted-foreground lg:text-left">
+          自分でも何ができるかはわからないですが、多分いろいろできます。
         </p>
-        <div className="mt-2 flex items-center justify-center gap-1 text-sm text-muted-foreground lg:justify-start">
-          <span>he/him</span>
+
+        <Separator />
+      </div>
+
+      <div className="flex min-h-0 w-full flex-1 flex-col gap-3 overflow-y-auto px-4 scrollbar-thin">
+        <div>
+          <h2 className="mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+            Links
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            <ProfileSidebarLinks />
+          </div>
+        </div>
+        <Separator />
+        <div>
+          <h2 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+            Skills
+          </h2>
+          <div className="mt-2 ml-2 flex flex-wrap gap-4">
+            {skillCategories.map((category) => (
+              <SkillCategory key={category.title} {...category} />
+            ))}
+          </div>
         </div>
       </div>
 
-      <p className="text-center text-sm leading-relaxed text-muted-foreground lg:text-left">
-        自分でも何ができるかはわからないですが、多分いろいろできます。
-      </p>
+      <div className="px-4 mb-4 w-full">
+        <Separator />
 
-      <Separator />
-
-      <div>
-        <h2 className="mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-          Links
-        </h2>
-        <div className="flex flex-wrap gap-4">
-          <ProfileSidebarLinks />
-        </div>
-      </div>
-
-      <Separator />
-
-      <div>
-        <h2 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-          Skills
-        </h2>
-        <div className="mt-2 ml-2 flex flex-wrap gap-4">
-          {skillCategories.map((category) => (
-            <SkillCategory key={category.title} {...category} />
-          ))}
-        </div>
-      </div>
-
-      <Separator />
-
-      <div>
-        <h2 className="mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+        <h2 className="mb-3 mt-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
           Contact
         </h2>
         <a

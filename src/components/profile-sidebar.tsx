@@ -76,7 +76,7 @@ function SkillCategory({ title, tooltip, items }: SkillCategoryProps) {
     <div>
       <Tooltip>
         <TooltipTrigger>
-          <h3 className="mb-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+          <h3 className="mb-1 text-xs font-normal tracking-wider text-muted-foreground uppercase">
             {title}
           </h3>
         </TooltipTrigger>
@@ -89,7 +89,7 @@ function SkillCategory({ title, tooltip, items }: SkillCategoryProps) {
           <Badge
             key={item}
             variant={"secondary"}
-            className="bg-primary/10 text-xs font-normal"
+            className="bg-primary/10 text-xs font-light"
           >
             {item}
           </Badge>
@@ -210,7 +210,7 @@ export function ProfileSidebar() {
 
       <div className="flex min-h-0 w-full flex-1 scrollbar-thin flex-col gap-3 overflow-y-auto px-4">
         <div>
-          <h2 className="mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+          <h2 className="mb-3 text-xs font-medium tracking-wider text-muted-foreground uppercase">
             Links
           </h2>
           <div className="flex flex-wrap gap-4">
@@ -219,7 +219,7 @@ export function ProfileSidebar() {
         </div>
         <Separator />
         <div>
-          <h2 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+          <h2 className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
             Skills
           </h2>
           <div className="mt-2 ml-2 flex flex-wrap gap-4">
@@ -233,7 +233,7 @@ export function ProfileSidebar() {
       <div className="mb-4 w-full px-4">
         <Separator />
 
-        <h2 className="mt-3 mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+        <h2 className="mt-3 mb-3 text-xs font-medium tracking-wider text-muted-foreground uppercase">
           Contact
         </h2>
         <a

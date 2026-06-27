@@ -123,10 +123,8 @@ export function TweetFrame({ username }: TweetFrameProps) {
               key={i}
               src={photo.url}
               alt={photo.altText ?? ""}
-              className={`w-full h-auto max-w-full object-cover rounded-lg ${
-                tweet.media!.photos!.length === 3 && i === 0
-                  ? "row-span-2"
-                  : ""
+              className={`h-auto w-full max-w-full rounded-lg object-cover ${
+                tweet.media!.photos!.length === 3 && i === 0 ? "row-span-2" : ""
               }`}
             />
           ))}

@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator.tsx"
 export function App() {
   return (
     <div className="flex min-h-screen flex-col lg:flex-row">
-      <div className="w-full border-b border-r-0 bg-sidebar lg:sticky lg:top-0 lg:h-screen lg:w-100 lg:shrink-0 lg:overflow-y-auto lg:border-r lg:border-b-0">
+      <div className="w-full border-r-0 border-b bg-sidebar lg:sticky lg:top-0 lg:h-screen lg:w-100 lg:shrink-0 lg:overflow-y-auto lg:border-r lg:border-b-0">
         <ProfileSidebar />
       </div>
 

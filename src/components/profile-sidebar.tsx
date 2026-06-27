@@ -1,134 +1,257 @@
-"use client";
-
-import React from "react";
-import Image from "next/image";
+import { Separator } from "@/components/ui/separator.tsx"
 import {
-  Github,
-  Twitter,
-  Mail,
-  Linkedin,
-  Globe,
-  User,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "@/components/ui/external-link";
-import { Separator } from "@/components/ui/separator";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { profile } from "@/lib/data";
-import type { SocialLink } from "@/lib/data";
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip.tsx"
+import { FaGithub, FaTwitter } from "react-icons/fa"
+import { SiHuggingface } from "react-icons/si"
+import { Badge } from "@/components/ui/badge.tsx"
+import { Mail } from "lucide-react"
 
-const iconMap: Record<SocialLink["icon"], React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
-  github: Github,
-  twitter: Twitter,
-  linkedin: Linkedin,
-  mail: Mail,
-  globe: Globe,
-};
-
-function SocialButton({ link }: { link: SocialLink }) {
-  const Icon = iconMap[link.icon];
-  if (!Icon) return null;
+function ProfileSidebarLinks() {
   return (
-    <ExternalLink href={link.url} ariaLabel={link.name}>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="h-9 w-9 text-muted-foreground hover:text-foreground cursor-pointer"
-      >
-        <Icon className="h-4 w-4" />
-      </Button>
-    </ExternalLink>
-  );
+    <>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <FaTwitter
+            size={28}
+            className="cursor-pointer text-muted-foreground hover:text-foreground"
+            onClick={() =>
+              window.open("https://x.com/i/user/1694095021862199297", "_blank")
+            }
+          />
+        </TooltipTrigger>
+        <TooltipContent side={"top"}>
+          <p>wayokan_beta</p>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <FaGithub
+            size={28}
+            className="cursor-pointer text-muted-foreground hover:text-foreground"
+            onClick={() =>
+              window.open("https://github.com/midorin-Linux", "_blank")
+            }
+          />
+        </TooltipTrigger>
+        <TooltipContent side={"top"}>
+          <p>midorin-Linux</p>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <SiHuggingface
+            size={28}
+            className="cursor-pointer text-muted-foreground hover:text-foreground"
+            onClick={() =>
+              window.open("https://huggingface.co/midorin-Linux", "_blank")
+            }
+          />
+        </TooltipTrigger>
+        <TooltipContent side={"top"}>
+          <p>midorin-Linux</p>
+        </TooltipContent>
+      </Tooltip>
+    </>
+  )
+}
+
+interface Skills {
+  natural_languages: string[]
+  programming_languages: string[]
+  frameworks: string[]
+  tools: string[]
+}
+
+interface SkillCategoryProps {
+  title: string
+  tooltip: string
+  items: string[]
+}
+
+function SkillCategory({ title, tooltip, items }: SkillCategoryProps) {
+  return (
+    <div>
+      <Tooltip>
+        <TooltipTrigger>
+          <h3 className="mb-1 text-xs font-normal tracking-wider text-muted-foreground">
+            {title}
+          </h3>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{tooltip}</p>
+        </TooltipContent>
+      </Tooltip>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((item) => (
+          <Badge
+            key={item}
+            variant={"secondary"}
+            className="bg-primary/10 text-xs font-light"
+          >
+            {item}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export function ProfileSidebar() {
-  const [avatarError, setAvatarError] = React.useState(false);
+  const ProfileSidebarSkills: Skills = {
+    natural_languages: [
+      "Japanese",
+      "English",
+      "German",
+      "Russian",
+      "Latin",
+      "Thai",
+      "Vietnamese",
+      "Taiwanese",
+    ],
+    programming_languages: [
+      "Rust",
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "Kotlin",
+      "C#",
+      "Java",
+      "CUDA",
+      "Zig",
+      "NASM",
+    ],
+    frameworks: [
+      "Axum",
+      "Tokio",
+      "Tauri 2.0",
+      "Flask",
+      "FastAPI",
+      "Transformer",
+      "PyTorch",
+      "TensorFlow",
+      "NumPy",
+      "Matplotlib",
+      "Next.js",
+      "React",
+      "Express.js",
+      "Spring Boot",
+      "Unity",
+      "Android SDK",
+    ],
+    tools: [
+      "AviUtil 2",
+      "Blender",
+      "Docker",
+      "Fusion 360",
+      "Git",
+      "IDA",
+      "PostgreSQL",
+      "Qdrant",
+      "VMware",
+      "YMM4",
+    ],
+  }
+
+  const skillCategories: { title: string; tooltip: string; items: string[] }[] =
+    [
+      {
+        title: "Natural languages",
+        tooltip: "話せる順",
+        items: ProfileSidebarSkills.natural_languages,
+      },
+      {
+        title: "Programming languages",
+        tooltip: "書ける順",
+        items: ProfileSidebarSkills.programming_languages,
+      },
+      {
+        title: "Frameworks",
+        tooltip: "書ける言語順",
+        items: ProfileSidebarSkills.frameworks,
+      },
+      { title: "Tools", tooltip: "A-Z順", items: ProfileSidebarSkills.tools },
+    ]
 
   return (
-    <aside className="flex flex-col items-center lg:items-start gap-6 p-6 lg:p-8">
-      <div className="self-end">
-        <ThemeToggle />
-      </div>
-
-      <div className="relative h-32 w-32 lg:h-40 lg:w-40 overflow-hidden rounded-full border-4 border-border shadow-lg">
-        {avatarError ? (
-          <div className="flex h-full w-full items-center justify-center bg-muted">
-            <User className="h-12 w-12 text-muted-foreground" />
-          </div>
-        ) : (
-          <Image
-            src={profile.avatarUrl}
-            alt={profile.name}
-            fill
-            className="object-cover"
-            priority
-            unoptimized
-            onError={() => setAvatarError(true)}
+    <aside className="flex h-full flex-col items-start gap-3 p-4 lg:max-h-screen">
+      <div className="mx-4 mt-4 flex shrink-0 flex-col items-start gap-4">
+        <div className="relative h-40 w-full sm:h-60">
+          <img
+            src="/avatar.jpg"
+            alt="アニメ化された諏訪子の女装をしている男子高校生"
+            className="h-40 w-40 rounded-full object-cover shadow-xl sm:h-60 sm:w-60"
           />
-        )}
-      </div>
+          <div className="absolute inset-0 top-28 left-12 flex rotate-345 items-center justify-center sm:top-45 sm:left-20">
+            <span className="shrink-0 bg-black/40 px-2 text-xl font-semibold tracking-wider text-white sm:text-3xl">
+              Matias Torres&hearts;
+            </span>
+          </div>
+        </div>
+        <div className="text-left">
+          <Tooltip>
+            <TooltipTrigger className="text-2xl font-medium tracking-tight">
+              やあさ
+            </TooltipTrigger>
+            <TooltipContent side={"right"}>
+              <p>別名: みどりん</p>
+            </TooltipContent>
+          </Tooltip>
+          <div className="flex flex-row gap-2">
+            <p className="font-medium text-muted-foreground">
+              学生趣味コーダー
+            </p>
+            <div className="my-auto mt-1 flex items-center justify-center gap-1 text-sm text-muted-foreground lg:justify-start">
+              <span>he/him</span>
+            </div>
+          </div>
+        </div>
 
-      <div className="text-center lg:text-left">
-        <h1 className="text-2xl font-bold tracking-tight">{profile.name}</h1>
-        <p className="mt-1 text-muted-foreground font-medium">
-          {profile.title}
+        <p className="text-center text-sm leading-relaxed text-muted-foreground lg:text-left">
+          自分でも何ができるかはわからないですが、多分いろいろできます。
         </p>
-        <div className="mt-2 flex items-center justify-center lg:justify-start gap-1 text-sm text-muted-foreground">
-          <span>he/him</span>
+
+        <Separator />
+      </div>
+
+      <div className="flex min-h-0 w-full flex-1 scrollbar-thin flex-col gap-3 px-4 lg:overflow-y-auto">
+        <div>
+          <h2 className="mb-3 text-xs font-medium tracking-wider text-muted-foreground">
+            Links
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            <ProfileSidebarLinks />
+          </div>
+        </div>
+        <Separator />
+        <div>
+          <h2 className="text-xs font-medium tracking-wider text-muted-foreground">
+            Skills
+          </h2>
+          <div className="mt-2 ml-2 flex flex-wrap gap-4">
+            {skillCategories.map((category) => (
+              <SkillCategory key={category.title} {...category} />
+            ))}
+          </div>
         </div>
       </div>
 
-      <p className="text-sm text-muted-foreground leading-relaxed text-center lg:text-left">
-        {profile.bio}
-      </p>
+      <div className="mb-4 w-full px-4">
+        <Separator />
 
-      <Separator />
-
-      <div>
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-          Links
-        </h2>
-        <div className="flex flex-wrap gap-1">
-          {profile.socialLinks.map((link) => (
-            <SocialButton key={link.name} link={link} />
-          ))}
-        </div>
-      </div>
-
-      <Separator />
-
-      <div>
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-          Skills
-        </h2>
-        <div className="flex flex-wrap gap-1.5">
-          {profile.skills.map((skill) => (
-            <Badge
-              key={skill.name}
-              variant="secondary"
-              className="text-xs font-medium"
-            >
-              {skill.name}
-            </Badge>
-          ))}
-        </div>
-      </div>
-
-      <Separator />
-
-      <div>
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+        <h2 className="mt-3 mb-3 text-xs font-medium tracking-wider text-muted-foreground">
           Contact
         </h2>
         <a
-          href={`mailto:${profile.email}`}
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          href={`mailto:moriya@suwako.me`}
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <Mail className="h-3.5 w-3.5" />
-          {profile.email}
+          moriya@suwako.me
         </a>
       </div>
     </aside>
-  );
+  )
 }

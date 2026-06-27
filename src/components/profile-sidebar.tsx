@@ -106,6 +106,7 @@ export function ProfileSidebar() {
       "English",
       "German",
       "Russian",
+      "Latin",
       "Thai",
       "Vietnamese",
       "Taiwanese",

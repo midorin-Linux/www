@@ -42,6 +42,7 @@ export function TweetFrame({ username }: TweetFrameProps) {
   const [tweet, setTweet] = useState<FxStatus | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [failedPhotos, setFailedPhotos] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     let cancelled = false
@@ -97,6 +98,10 @@ export function TweetFrame({ username }: TweetFrameProps) {
           src={tweet.author.avatar_url}
           alt={tweet.author.name}
           className="h-10 w-10 rounded-full sm:h-12 sm:w-12"
+          onError={(e) => {
+            e.currentTarget.onerror = null
+            e.currentTarget.src = "/avatar.jpg"
+          }}
         />
         <div className="text-sm sm:text-base">
           <p className="font-medium">{tweet.author.name}</p>
@@ -109,25 +114,37 @@ export function TweetFrame({ username }: TweetFrameProps) {
       {tweet.media?.photos && tweet.media.photos.length > 0 && (
         <div
           className={`mt-3 grid gap-1 overflow-hidden rounded-lg sm:mt-4 sm:gap-2 ${
-            tweet.media.photos.length === 1
-              ? "grid-cols-1"
-              : tweet.media.photos.length === 2
-                ? "grid-cols-2"
-                : tweet.media.photos.length === 3
-                  ? "grid-cols-2"
-                  : "grid-cols-2"
+            tweet.media.photos.length === 1 ? "grid-cols-1" : "grid-cols-2"
           }`}
         >
-          {tweet.media.photos.map((photo, i) => (
-            <img
-              key={i}
-              src={photo.url}
-              alt={photo.altText ?? ""}
-              className={`h-auto w-full max-w-full rounded-lg object-cover ${
-                tweet.media!.photos!.length === 3 && i === 0 ? "row-span-2" : ""
-              }`}
-            />
-          ))}
+          {tweet.media.photos.map((photo, i) =>
+            failedPhotos.has(photo.url) ? (
+              <a
+                key={i}
+                href={photo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-sm break-all text-blue-500 underline hover:text-blue-600 sm:text-base"
+              >
+                {photo.url.split("?")[0]}
+              </a>
+            ) : (
+              <img
+                key={i}
+                src={photo.url}
+                alt={photo.altText ?? ""}
+                onError={() =>
+                  setFailedPhotos((prev) => new Set(prev).add(photo.url))
+                }
+                className={`h-auto w-full max-w-full rounded-lg object-cover ${
+                  tweet.media!.photos!.length === 3 && i === 0
+                    ? "row-span-2"
+                    : ""
+                }`}
+              />
+            )
+          )}
         </div>
       )}
       <p className="mt-3 text-xs text-muted-foreground sm:mt-4 sm:text-sm">

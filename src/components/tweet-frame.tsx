@@ -90,23 +90,25 @@ export function TweetFrame({ username }: TweetFrameProps) {
       href={tweet.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block rounded-lg border p-4 transition-colors hover:bg-accent/50"
+      className="block rounded-lg border p-4 transition-colors hover:bg-accent/50 sm:p-6"
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 sm:gap-3">
         <img
           src={tweet.author.avatar_url}
           alt={tweet.author.name}
-          className="h-10 w-10 rounded-full"
+          className="h-10 w-10 rounded-full sm:h-12 sm:w-12"
         />
-        <div className="text-sm">
+        <div className="text-sm sm:text-base">
           <p className="font-medium">{tweet.author.name}</p>
           <p className="text-muted-foreground">@{tweet.author.screen_name}</p>
         </div>
       </div>
-      <p className="mt-3 text-sm whitespace-pre-wrap">{tweet.text}</p>
+      <p className="mt-3 text-sm whitespace-pre-wrap sm:mt-4 sm:text-base">
+        {tweet.text}
+      </p>
       {tweet.media?.photos && tweet.media.photos.length > 0 && (
         <div
-          className={`mt-3 grid gap-1 overflow-hidden rounded-lg ${
+          className={`mt-3 grid gap-1 overflow-hidden rounded-lg sm:mt-4 sm:gap-2 ${
             tweet.media.photos.length === 1
               ? "grid-cols-1"
               : tweet.media.photos.length === 2
@@ -130,7 +132,9 @@ export function TweetFrame({ username }: TweetFrameProps) {
           ))}
         </div>
       )}
-      <p className="mt-3 text-xs text-muted-foreground">{tweet.created_at}</p>
+      <p className="mt-3 text-xs text-muted-foreground sm:mt-4 sm:text-sm">
+        {tweet.created_at}
+      </p>
     </a>
   )
 }

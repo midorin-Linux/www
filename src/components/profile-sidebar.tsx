@@ -203,7 +203,7 @@ export function ProfileSidebar() {
             <p className="font-medium text-muted-foreground">
               学生趣味コーダー
             </p>
-            <div className="mt-1 flex items-center justify-center my-auto gap-1 text-sm text-muted-foreground lg:justify-start">
+            <div className="my-auto mt-1 flex items-center justify-center gap-1 text-sm text-muted-foreground lg:justify-start">
               <span>he/him</span>
             </div>
           </div>

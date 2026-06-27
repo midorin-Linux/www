@@ -1,4 +1,6 @@
 import { ProfileSidebar } from "@/components/profile-sidebar.tsx"
+import { TweetFrame } from "@/components/tweet-frame.tsx"
+import { Separator } from "@/components/ui/separator.tsx"
 
 export function App() {
   return (
@@ -7,17 +9,20 @@ export function App() {
         <ProfileSidebar />
       </div>
 
-      <main className="min-w-0 flex-1">
-        <div className="mx-auto max-w-6xl space-y-16 px-6 py-16">
-          <h1>Hello!</h1>
-
-          <footer className="border-t pt-8">
-            <p className="text-center text-xs text-muted-foreground">
-              &copy; {new Date().getFullYear()} midorin-Linux. All rights
-              reserved.
-            </p>
-          </footer>
+      <main className="flex min-h-screen min-w-0 flex-1 flex-col">
+        <div className="mx-auto flex w-full max-w-6xl flex-1 items-center justify-center px-6 py-16">
+          <div className="w-full max-w-4xl">
+            <TweetFrame username="wayokan_beta" />
+          </div>
         </div>
+
+        <footer className="mx-auto w-full max-w-6xl px-6 py-4">
+          <Separator className="my-4" />
+          <p className="text-center text-xs text-muted-foreground">
+            &copy; {new Date().getFullYear()} midorin-Linux. All rights
+            reserved.
+          </p>
+        </footer>
       </main>
     </div>
   )

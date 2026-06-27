@@ -176,16 +176,16 @@ export function ProfileSidebar() {
     ]
 
   return (
-    <aside className="flex h-full max-h-screen flex-col items-start gap-3 p-4">
+    <aside className="flex h-full flex-col items-start gap-3 p-4 lg:max-h-screen">
       <div className="mx-4 mt-4 flex shrink-0 flex-col items-start gap-4">
-        <div className="relative h-60 w-full">
+        <div className="relative h-40 w-full sm:h-60">
           <img
             src="/avatar.jpg"
             alt="アニメ化された諏訪子の女装をしている男子高校生"
-            className="h-60 w-60 rounded-full object-cover shadow-xl"
+            className="h-40 w-40 rounded-full object-cover shadow-xl sm:h-60 sm:w-60"
           />
-          <div className="absolute inset-0 top-45 left-20 flex rotate-345 items-center justify-center">
-            <span className="shrink-0 bg-black/40 px-2 text-3xl font-semibold tracking-wider text-white">
+          <div className="absolute inset-0 top-28 left-12 flex rotate-345 items-center justify-center sm:top-45 sm:left-20">
+            <span className="shrink-0 bg-black/40 px-2 text-xl font-semibold tracking-wider text-white sm:text-3xl">
               Matias Torres&hearts;
             </span>
           </div>
@@ -216,7 +216,7 @@ export function ProfileSidebar() {
         <Separator />
       </div>
 
-      <div className="flex min-h-0 w-full flex-1 scrollbar-thin flex-col gap-3 overflow-y-auto px-4">
+      <div className="flex min-h-0 w-full flex-1 scrollbar-thin flex-col gap-3 px-4 lg:overflow-y-auto">
         <div>
           <h2 className="mb-3 text-xs font-medium tracking-wider text-muted-foreground">
             Links

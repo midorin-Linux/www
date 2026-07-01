@@ -186,7 +186,7 @@ export function ProfileSidebar() {
           />
           <div className="absolute inset-0 top-28 left-12 flex rotate-345 items-center justify-center sm:top-45 sm:left-20">
             <span className="shrink-0 bg-black/40 px-2 text-xl font-semibold tracking-wider text-white sm:text-3xl">
-              A World With No Boundaries
+              Salvation!
             </span>
           </div>
         </div>

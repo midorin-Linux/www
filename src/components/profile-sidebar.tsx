@@ -261,14 +261,14 @@ export function ProfileSidebar() {
   return (
     <aside
       aria-label="プロフィール"
-      className="flex scrollbar-thin w-full flex-col gap-6 border-b bg-sidebar p-6 lg:sticky lg:top-0 lg:h-screen lg:w-80 lg:shrink-0 lg:overflow-y-auto lg:border-r lg:border-b-0 xl:w-96"
+      className="flex w-full flex-col gap-6 border-b bg-sidebar p-6 lg:sticky lg:top-0 lg:h-screen lg:w-80 lg:shrink-0 lg:border-r lg:border-b-0 xl:w-96"
     >
       <div className="flex shrink-0 flex-col items-start gap-4">
         <div className="relative h-40 w-full sm:h-60">
           <img
             src="/avatar.jpg"
             alt="やあさのアバター"
-            className="h-40 w-40 rounded-full object-cover shadow-xl ring-2 ring-border ring-offset-2 ring-offset-sidebar sm:h-60 sm:w-60"
+            className="h-40 w-40 rounded-full object-cover shadow-xl sm:h-60 sm:w-60"
           />
           <div className="absolute inset-0 top-28 left-12 flex rotate-345 items-center justify-center sm:top-45 sm:left-20">
             <span className="shrink-0 bg-black/40 px-2 text-xl font-semibold tracking-wider text-white sm:text-3xl">
@@ -300,7 +300,7 @@ export function ProfileSidebar() {
         </p>
       </div>
 
-      <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
+      <div className="scrollbar-thin flex min-h-0 w-full flex-1 flex-col gap-6 lg:overflow-y-auto">
         <div>
           <div className="mb-3">
             <SectionHeading>Links</SectionHeading>
@@ -329,7 +329,7 @@ export function ProfileSidebar() {
         </CollapsibleSection>
       </div>
 
-      <div className="w-full border-t pt-4">
+      <div className="w-full shrink-0 border-t pt-4">
         <ThemeToggle />
       </div>
     </aside>

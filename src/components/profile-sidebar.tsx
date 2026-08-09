@@ -300,7 +300,7 @@ export function ProfileSidebar() {
         </p>
       </div>
 
-      <div className="scrollbar-thin flex min-h-0 w-full flex-1 flex-col gap-6 lg:overflow-y-auto">
+      <div className="flex scrollbar-thin min-h-0 w-full flex-1 flex-col gap-6 lg:overflow-y-auto">
         <div>
           <div className="mb-3">
             <SectionHeading>Links</SectionHeading>

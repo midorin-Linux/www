@@ -4,12 +4,21 @@ import profileIcon from "./assets/profile_icon.png";
 import { useTweetFrame } from "./components/get-fxtwitter.tsx";
 import { TweetEmbed } from "./components/tweet-embed.tsx";
 
+const MAX_TWEET_LENGTH = 100;
+
+function truncateTweetText(text: string): string {
+  const characters = Array.from(text);
+  return characters.length > MAX_TWEET_LENGTH
+    ? `${characters.slice(0, MAX_TWEET_LENGTH - 3).join("")}...`
+    : text;
+}
+
 function App() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const bubbleClassName =
-    "relative rounded-lg border bg-white p-4 before:absolute before:top-6 before:-left-2 before:size-3.5 before:rotate-45 before:border-b before:border-l before:bg-inherit before:content-[' ']";
+    "relative rounded-lg border bg-white before:absolute before:top-6 before:-left-2 before:size-3.5 before:rotate-45 before:border-b before:border-l before:bg-inherit before:content-[' ']";
 
   const username = "wayokan_beta";
   const { response, loading, error } = useTweetFrame(username);
@@ -33,17 +42,37 @@ function App() {
                     dialogRef.current?.showModal();
                     setDialogOpen(true);
                   }}
-                  className={`${bubbleClassName} block transition-colors hover:bg-gray-50`}
+                  className={`${bubbleClassName} flex flex-col transition-colors px-4 py-3 gap-1 hover:bg-gray-50`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">
+                  <p className="text-sm whitespace-pre-wrap text-start">
                     {loading
                       ? "Thinking..."
-                      : (error ?? tweet?.text ?? "投稿が見つかりませんでした")}
+                      : (error ??
+                        (tweet?.text
+                          ? truncateTweetText(tweet.text)
+                          : "投稿が見つかりませんでした"))}
+                  </p>
+                  <p className="flex text-xs font-light text-slate-700 underline underline-offset-4 decoration-slate-400 justify-end">
+                    クリックで詳細を表示→
                   </p>
                 </button>
               </div>
               <div>
-                <p className="text-2xl font-medium tracking-tight">やあさ</p>
+                <div className="flex flex-row items-center gap-2">
+                  <p className="text-2xl font-medium tracking-tight">やあさ</p>
+                  <nav>
+                    <a
+                      href="https://x.com/wayokan_beta"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        alt="Static Badge"
+                        src="https://img.shields.io/badge/Twitter-%40wayokan_beta-white?logo=X"
+                      />
+                    </a>
+                  </nav>
+                </div>
                 <div className="flex flex-row items-center gap-2">
                   <p className="text-medium text-gray-700">探究型個人開発者</p>
                   <p className="text-sm text-gray-700">he/him</p>

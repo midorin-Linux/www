@@ -21,9 +21,9 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   {
     icon: FaTwitter,
-    href: "https://x.com/i/user/1694095021862199297",
-    label: "X (Twitter) を開く: wayokan_beta",
-    tooltip: "wayokan_beta",
+    href: "https://x.com/midorin_proj",
+    label: "X (Twitter) を開く: midorin_proj",
+    tooltip: "midorin_proj",
   },
   {
     icon: FaGithub,

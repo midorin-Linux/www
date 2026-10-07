@@ -10,7 +10,7 @@ export function App() {
       <main className="flex min-h-screen min-w-0 flex-1 flex-col">
         <div className="mx-auto flex w-full max-w-6xl flex-1 items-center justify-center px-4 py-10 sm:px-6 sm:py-16">
           <div className="w-full max-w-4xl">
-            <TweetFrame username="wayokan_beta" />
+            <TweetFrame username="midorin_proj" />
           </div>
         </div>
 

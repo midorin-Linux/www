@@ -61,15 +61,35 @@ function App() {
               <div>
                 <div className="flex flex-row items-center gap-2">
                   <p className="text-2xl font-medium tracking-tight">やあさ</p>
-                  <nav>
+                  <nav className="flex gap-1">
                     <a
-                      href={`https://x.com/${username}`}
+                      href="https://x.com/midorin_proj"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <img
-                        alt="Static Badge"
-                        src={`https://img.shields.io/badge/Twitter-%40${username}-white?logo=X`}
+                        alt="Static Badge X"
+                        src={`https://img.shields.io/badge/Twitter-%40midorin__proj-white?logo=X`}
+                      />
+                    </a>
+                    <a
+                      href="https://github.com/midorin-Linux"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        alt="Static Badge HuggingFace"
+                        src="https://img.shields.io/badge/GitHub-midorin--Linux-white?logo=github"
+                      />
+                    </a>
+                    <a
+                      href="https://huggingface.co/midorin-Linux"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        alt="Static Badge HuggingFace"
+                        src="https://img.shields.io/badge/Hugging%20Face-midorin--Linux-white?labelColor=gold&logo=huggingface&logoColor=white"
                       />
                     </a>
                   </nav>

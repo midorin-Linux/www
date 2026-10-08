@@ -25,9 +25,9 @@ function App() {
   const tweet = response?.results?.find((status) => !status.reposted_by);
   return (
     <>
-      <main>
+      <main className="mx-8 mt-8">
         <section className="profile">
-          <div className="flex flex-row h-50 items-stretch gap-5">
+          <div className="flex flex-row h-65 items-stretch gap-5">
             <img
               src={profileIcon}
               alt="profile"

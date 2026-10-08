@@ -20,7 +20,7 @@ function App() {
   const bubbleClassName =
     "relative rounded-lg border bg-white before:absolute before:top-6 before:-left-2 before:size-3.5 before:rotate-45 before:border-b before:border-l before:bg-inherit before:content-[' ']";
 
-  const username = "wayokan_beta";
+  const username = "midorin_proj";
   const { response, loading, error } = useTweetFrame(username);
   const tweet = response?.results?.find((status) => !status.reposted_by);
   return (

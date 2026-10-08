@@ -23,6 +23,7 @@ function App() {
   const username = "midorin_proj";
   const { response, loading, error } = useTweetFrame(username);
   const tweet = response?.results?.find((status) => !status.reposted_by);
+
   return (
     <>
       <main className="mx-8 mt-8">
@@ -62,13 +63,13 @@ function App() {
                   <p className="text-2xl font-medium tracking-tight">やあさ</p>
                   <nav>
                     <a
-                      href="https://x.com/wayokan_beta"
+                      href={`https://x.com/${username}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <img
                         alt="Static Badge"
-                        src="https://img.shields.io/badge/Twitter-%40wayokan_beta-white?logo=X"
+                        src={`https://img.shields.io/badge/Twitter-%40${username}-white?logo=X`}
                       />
                     </a>
                   </nav>
